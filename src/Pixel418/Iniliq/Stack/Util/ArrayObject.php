@@ -60,6 +60,7 @@ class ArrayObject extends \ArrayObject {
 	/*************************************************************************
 	  HERITED ACCESSOR METHODS				   
 	 *************************************************************************/
+    #[\ReturnTypeWillChange]
 	public function offsetExists( $index ) {
 		if ( $this->deepSelectorOption ) {
 			return \UArray::hasDeepSelector( $this->getArrayCopy( ), $index );
@@ -67,6 +68,7 @@ class ArrayObject extends \ArrayObject {
 		return parent::offsetExists( $index );
 	}
 
+    #[\ReturnTypeWillChange]
 	public function offsetGet( $index ) {
 		if ( ! $this->has( $index ) ) {
 			$this->undefinedIndexAcces( $index );
@@ -78,6 +80,7 @@ class ArrayObject extends \ArrayObject {
 		return parent::offsetGet( $index );
 	}
  
+    #[\ReturnTypeWillChange]
 	public function offsetSet( $index, $new_val ) {
 		if ( $this->deepSelectorOption ) {
 			$new_array = \UArray::setDeepSelector( $this->getArrayCopy( ), $index, $new_val );
@@ -86,6 +89,7 @@ class ArrayObject extends \ArrayObject {
 		return parent::offsetSet( $index, $new_val );
 	}
  
+    #[\ReturnTypeWillChange]
 	public function offsetUnset( $index ) {
 		if ( ! $this->has( $index ) ) {
 			$this->undefinedIndexAcces( $index );
